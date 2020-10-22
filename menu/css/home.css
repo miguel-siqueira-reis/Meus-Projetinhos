@@ -1,0 +1,159 @@
+@charset "utf8";
+/*---------------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: 0;
+}
+
+body {
+	font-family: 'Open Sans', Arial, sans-serif;
+	background-color: #F2F5F7;
+	min-height: 300vh;
+}
+
+/*cabeçalho*/
+
+header {
+    background-color: rgba(255,255,255, 0.1);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+	border-bottom: 1px solid rgba(0,0,0, 0.2);
+	z-index: 1;
+}
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+
+}
+
+nav li {
+	list-style: none;
+}
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+	font-weight: bold;
+	padding: 0.5rem;
+	margin: 0.5rem;
+	transition: background 0.2s;
+}
+
+nav a:hover {
+	background-color: rgba(200,200,200, 0.3);
+}
+
+.btn-menu {
+	display: none;
+}
+
+.btn-close {
+	display: none;
+}
+
+.int {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: url('1.jpg') no-repeat center / cover;
+	color: white;
+	font-weight: 500px;
+	display: flex;
+	align-items: center;
+}
+
+.container.mudou {
+	color: black;
+}
+
+.cab.mudou_color {
+	background-color: rgba(0,0,0,0.2);
+}
+
+
+.int h2 {
+	margin: 0 auto;
+	width: 55%;
+}
+
+
+
+@media (max-width: 960px) {
+	.container {
+		padding: 0 2rem;
+	}
+}
+
+
+@media (max-width: 520px) {
+	.int h2 {
+		font-size: 14pt;
+		width: 70%
+	}
+
+	.container nav {
+		width: 100%;
+		position: absolute;
+		top: 4.3rem;
+		background-color: rgba(0,0,0,0.2);
+		width: 100%;
+		left: -100%;
+		transition: left .5s ease-in-out;
+	}
+
+	.container ul {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	nav li {
+		padding: 1.5rem;
+	}
+	
+	nav a {
+		width: 100%;
+		padding: 1.5rem 3rem;
+		text-align: center;
+		box-sizing: border-box;
+	}
+
+	.btn-menu {
+		display: block;
+		font-size: 24px;
+		color: inherit;
+	}
+
+	.menu.active {
+		left: 0;
+	}
+
+	.btn-menu.active {
+		display: none;
+	}
+
+	.btn-close {
+		display: none;
+	}
+
+	.btn-close.active {
+		display: block;
+		font-size: 24px;
+		color: inherit;
+	}
+
+
+}

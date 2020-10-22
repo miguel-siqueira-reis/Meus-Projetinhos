@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Barbearia Alura</title>
+		<link rel="stylesheet" href="css/home.css">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+	</head>
+
+	<body> 
+		<header class="cab">
+			<div id="container" class="container">
+				<h1>logo</h1>
+				<nav class="menu">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="produtos.html">Produtos</a></li>
+						<li><a href="contatos.html">Contatos</a></li>
+					</ul>
+				</nav>
+				<div class="btn-menu btn-open"><i class="fa fa-bars" aria-hidden="true"></i></div>
+				<div class="btn-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+			</div>
+		</header>
+		<main class="">
+			<section class="int">
+				<h2>Isso é um lindo teste</br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para menu profisional</h2>
+			</section>
+		</main>
+		
+		<footer>
+		</footer>
+		<script type="text/javascript">
+			const container = document.querySelector("div.container");
+			const header = document.querySelector(".cab");
+			window.addEventListener("scroll", function(){
+				container.classList.toggle("mudou", window.scrollY > 619);
+				header.classList.toggle("mudou_color", window.scrollY > 619);				
+			})
+		</script>
+		<script type="text/javascript" src="btn.js"></script>
+	</body>
+</html>

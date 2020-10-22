@@ -160,6 +160,7 @@ function pipesCreate() {
             spriteY: 169,
         },
         spaceBetween: 90,
+        stop: false,
         draw() {
             pipes.pairs.forEach((pipe) => {
                 const randomY = pipe.y;
@@ -188,17 +189,19 @@ function pipesCreate() {
         },
         pairs: [],
         update() {
-            if (frames % 100 == 0) {
-                console.log("foi")
-                pipes.pairs.push({
-                    x: canvas.width,
-                    y: -150 * (Math.random() + 1)
+            if (pipes.stop == false) {
+                if (frames % 100 == 0) {
+                    console.log("foi")
+                    pipes.pairs.push({
+                        x: canvas.width,
+                        y: -150 * (Math.random() + 1)
+                    })
+                }
+
+                pipes.pairs.forEach((pipe) => {
+                    pipe.x = pipe.x - 2;
                 })
             }
-
-            pipes.pairs.forEach((pipe) => {
-                pipe.x = pipe.x - 2;
-            })
         },
     }
     return pipes;
@@ -248,8 +251,9 @@ const screens = {
     gameOverScreen: {
         draw() {
             flapBird.stop = true;
+            pipes.stop = true;
             flapBird.draw();
-            
+            pipes.draw();
         },
         update() {
 

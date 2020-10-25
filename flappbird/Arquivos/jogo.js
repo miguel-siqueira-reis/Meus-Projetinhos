@@ -69,6 +69,7 @@ function flapCreate() {
     }
     return flapBird;
 }
+var flapBird = flapCreate();
 
 //floor
 function floorCreate() {
@@ -183,15 +184,39 @@ function pipesCreate() {
                     pipeFloorX, pipeFloorY, //A posição dele dentro do canvas
                     pipes.spriteW, pipes.spriteH //E o tamanho dentro do canvas
                 ); 
+                pipe.pipeSky = {
+                    x: pipeSkyX,
+                    y: pipes.spriteH + randomY
+                }
+                pipe.pipeFloor = {
+                    x: pipeFloorX,
+                    y: pipeFloorY
+                }
             })
 
-            
         },
+
+        birdTouchedThePipes(pipe) {
+            const headerBird = flapBird.canvasY;
+            const footBird = flapBird.canvasY + flapBird.canvasH;
+            if (flapBird.canvasX+30 >= pipe.x) {
+                if (headerBird <= pipe.pipeSky.y-4) {
+                    
+                    return true;
+                }
+                
+                if (footBird-2 >= pipe.pipeFloor.y) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        },
+
         pairs: [],
         update() {
             if (pipes.stop == false) {
                 if (frames % 100 == 0) {
-                    console.log("foi")
                     pipes.pairs.push({
                         x: canvas.width,
                         y: -150 * (Math.random() + 1)
@@ -200,11 +225,38 @@ function pipesCreate() {
 
                 pipes.pairs.forEach((pipe) => {
                     pipe.x = pipe.x - 2;
+                    if (pipes.birdTouchedThePipes(pipe)) {
+                        changeScreen(screens.gameOverScreen)
+                    }
+
+                    if (pipe.x <= -pipes.spriteW) {
+                        this.pairs.shift();
+                    }
                 })
             }
         },
     }
     return pipes;
+}
+
+const gameOverDisplay = {
+    spriteX: 125,
+    spriteY: 152,
+    spriteW: 245,
+    spriteH: 209,
+    canvasX: (canvas.width / 2) -237 / 2,
+    canvasY: 50,
+    canvasW: 237,
+    canvasH: 219,
+    draw() {
+        contexto.drawImage(
+            sprites, //Sprite de exemplo
+            gameOverDisplay.spriteX, gameOverDisplay.spriteY, //A posição dele dentro do sprite
+            gameOverDisplay.spriteW, gameOverDisplay.spriteH, ///O tamanho dele dentro do sprite
+            gameOverDisplay.canvasX, gameOverDisplay.canvasY, //A posição dele dentro do canvas
+            gameOverDisplay.canvasW, gameOverDisplay.canvasH //E o tamanho dentro do canvas
+        ); 
+    }
 }
 
 //--------//
@@ -214,12 +266,12 @@ function changeScreen(newScreen) {
     currentScreen = newScreen;
 }
 
-flapBird = flapCreate();
 floor = floorCreate();
 pipes = pipesCreate();
 const screens = {
     homeScreen: {
         draw() {
+            floor.draw();
             startGame.draw();
             flapBird.draw();
         },
@@ -234,8 +286,9 @@ const screens = {
     },
     gameScreen: {
         draw() {
-            flapBird.draw();
             pipes.draw();
+            floor.draw();
+            flapBird.draw();
         },
         update() {
             if (flapBird.outGame()) changeScreen(screens.gameOverScreen);
@@ -252,8 +305,10 @@ const screens = {
         draw() {
             flapBird.stop = true;
             pipes.stop = true;
-            flapBird.draw();
             pipes.draw();
+            floor.draw();
+            flapBird.draw();
+            gameOverDisplay.draw();
         },
         update() {
 
@@ -261,8 +316,8 @@ const screens = {
         click() {
             changeScreen(screens.homeScreen);
             flapBird = flapCreate();
-            floor = floorCreate();
             pipes = pipesCreate();
+            floor = floorCreate();
         }
     }
 }
@@ -273,8 +328,6 @@ const screens = {
 function loopframe() {
     frames++;
     backgroundGame.draw();
-    floor.draw();
-
     currentScreen.draw();
     currentScreen.update();
 

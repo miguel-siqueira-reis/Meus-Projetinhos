@@ -18,8 +18,12 @@ function validateErrors(field) {
 
     for(let error in field.validity) {
         if (field.validity[error] && !field.validity.valid) {
-            findError = error;    
+            findError = 'Campo invalido';    
         }
+    }
+
+    if (field.value.length < 6 && field.value.length > 0 && field.classList.contains('pass')) {
+        findError = 'A senha não pode ser menor que 6 e maior que 30 caracteres';
     }
 
     return findError;
@@ -28,7 +32,7 @@ function validateErrors(field) {
 function aboutError(error, field) {
     let spanError = field.parentNode.querySelector('.error');
     if (error) {
-        spanError.innerHTML = 'Campo invalido!!';
+        spanError.innerHTML = error;
         spanError.classList.add('isValid');
     } else {
         spanError.innerHTML = '';

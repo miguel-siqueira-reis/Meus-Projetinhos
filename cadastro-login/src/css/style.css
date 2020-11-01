@@ -1,0 +1,183 @@
+@charset "utf8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Open-sans, sans-serif;
+    background: linear-gradient( 135deg, #51A7F0, #3A3BFF );
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    padding-left: 3%;
+    width: 160px;
+    height: 50px;
+    margin: 0;
+}
+
+.title {
+    text-align: center;
+    margin: 1rem;
+    font-weight: bold;
+    color: #325dfa;
+}
+
+.container {
+    width: 100%;
+    max-height: 500px;
+    max-width: 450px;
+    margin: 0 2rem;
+    background-color: white;
+    border-radius: 5%;
+    padding: 1rem;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    position: relative;
+    top: -35px;
+    margin: 0;
+    padding: 0;
+    padding-left: 2px;
+    cursor: text;
+    transition: 0.4s;
+}
+
+.pass {
+    margin-top: 2rem;
+}
+
+.name, .pass {
+    width: 100%;
+    padding: 0.6rem 0.4rem;
+    border-bottom: 1px solid black;
+    font-size: 11pt;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -65px;
+    cursor: alias;
+}
+
+.error {
+    color: #fc5555;
+    margin: 0;
+    display: none;
+}
+
+.isValid {
+    display: block;
+    margin-top: -1rem;
+}
+
+.change {
+	font-size: 10pt;
+    margin: 1rem 1rem 2rem 0;
+}
+
+
+.btn {
+    border-radius: 50px;
+    padding: 1rem 1rem;
+    font-size: 12pt;
+    font-weight: 500;
+    color: white;
+    background: #3A3BFF;
+    cursor: pointer;
+    margin: 0.5rem auto;
+    width: 100%;
+    transition: background-color .5s;
+}
+
+.btn:hover {
+    background-color: #0001ff;
+}
+
+
+@media screen and (max-width: 415px) {
+    .container {
+	    max-height: 500px;
+        margin: 0.5rem;
+    }
+    
+    .logo {
+        padding-left: 0%;
+        width: 160px;
+        height: 50px;
+        margin: 0;
+    }
+    
+    .form {
+	    width: 90%;
+        font-size: 11pt;
+    }
+    
+    .name, .pass {
+        padding: 0.5rem 0.4rem;
+    }
+    
+    label {
+        padding: 0;
+        margin: 0;
+        top: -25px;
+        cursor: alias;
+    }
+    
+    input:focus ~ label,
+    input:valid ~ label {
+        top: -55px;
+        cursor: alias;
+    }
+
+    
+    .label__pass {
+        margin-top: 1.5rem;
+    }
+    
+    .title {
+        text-align: center;
+        margin: 1rem;
+    }
+    
+    .change {
+	    font-size: 9pt;
+        margin-top: 1em;
+    }
+    
+    .btn {
+        margin-top: 1rem;
+    }
+
+}
+
+/*
+@media screen and (max-width: 250px) {
+    .container {
+	    height: 150%;
+        margin-top: 15rem;
+    }
+}
+*/

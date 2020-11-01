@@ -1,0 +1,23 @@
+Atalhos legais e realmente úteis.
+
+Todo editor de código tem um zilhão de atalhos, mas a maioria não faz sentido algum. No Brackets realmente encontramos atalhos úteis.
+CTRL + + e CTRL + – 	Aumenta e diminui a fonte. Para ceguetas igual a mim, este recurso é valioso.
+CTRL + 0 	Retorna o tamanho da fonte para o padrão do Brackets.
+CTRL + / 	Transforma a lina na qual o curso está posicionada em um comentário.
+CTRL + T 	Inicia um bloco <> </>
+CTRL + SHIFT + / 	Cria um novo comentário, abrindo e fechando automaticamente os elementos /**/ e já posiciona o curso no meio dos asteriscos para o desenvolver iniciar a digitação.
+CTRL + F 	Localiza parte de um texto.
+CTRL + H 	Localize parte de um texto e permite substituir por outra.
+CTRL + K 	Pare o curso do mouse sobre uma tag HTML, CSS ou JS e pressione este atalho, ele irá mostrar a documentação do elemento de acordo com a MDN – Mozilla Developer Network
+CTRL + ALT + L 	Alinha o código de todo o documento, deixando mais agradável e organizado.
+CTRL + O 	Abre um novo arquivo.
+CTRL + S 	Salva o arquivo.
+CTRL + W 	Fecha o arquivo (apenas o arquivo) que está aberto.
+CTRL + ALT + S 	Salva todos os arquivos abertos que foram editados.
+CTRL + N 	Abre um novo arquivo.
+CTRL + Q 	Fecha o Brackets.
+CTRL + ALT + R 	Exibe uma lista dos arquivos editados recentemente.
+CTRL + Z 	Desfaz a última edição. Limite de 20 edições
+CTRL + Y 	Anula o comando CTRL + Z refazendo a edição.
+ALT + 1 	Recolhe todo o código fonte, útil para códigos muito longos.
+ALT + SHIFT + 1 	Anula o ALT + 1, expandido todo o código novamente

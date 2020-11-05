@@ -1,0 +1,91 @@
+@charset 'utf8';
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    font-family: "Noto sasns", sans-serif;
+}
+
+.title {
+    margin-top: 5rem;
+}
+
+
+.game {
+    background-color: #AAAAAA;
+    width: 308px;
+    height: 306px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.game div {
+    width: 100px;
+    height: 100px;
+    font-size: 30pt;
+    background-color: #363660;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.btn {
+    padding: 1rem;
+    background-color: #6f6fff;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    box-shadow: 1px 1px 3px black;
+    margin: 3rem;
+}
+
+.btn.active {
+    background-color: #4242f8;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.btn.active:hover {
+    transform: scale(1.1);
+}
+
+
+.table {
+	min-width: 300px;
+    height: 100px;
+    color: white;
+    background-color: #6c4d96;
+    border: 1px solid blue;
+    margin-bottom: 5rem;
+    display: none;
+}
+
+.table thead {
+    background-color: #6e588b;
+    padding: 1rem;
+}
+
+.table thead th {
+    padding: 1rem;
+    border-bottom: 1px solid blue;
+    
+}
+.play1 {
+    border-right: 1px solid blue;
+}
+
+.table tbody td {
+    text-align: center;
+}
+
+.point_play1 {
+    border-right: 1px solid blue;
+}

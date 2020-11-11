@@ -22,6 +22,7 @@ header {
     width: 100%;
 	border-bottom: 1px solid rgba(0,0,0, 0.2);
 	z-index: 1;
+	transition: all 0.0.4s;
 }
 
 .container {
@@ -31,7 +32,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	color: white;
-
+	transition: all 0.4s;
 }
 
 nav ul {
@@ -44,7 +45,7 @@ nav li {
 	list-style: none;
 }
 
-nav a {
+.link {
 	text-decoration: none;
 	color: inherit;
 	font-weight: bold;
@@ -53,7 +54,7 @@ nav a {
 	transition: background 0.2s;
 }
 
-nav a:hover {
+.link:hover {
 	background-color: rgba(200,200,200, 0.3);
 }
 
@@ -78,6 +79,10 @@ nav a:hover {
 
 .container.mudou {
 	color: black;
+}
+
+.link.linkchange:hover {
+	background-color: rgba(500,500,500, 0.5);
 }
 
 .cab.mudou_color {
@@ -124,7 +129,7 @@ nav a:hover {
 		padding: 1.5rem;
 	}
 	
-	nav a {
+	.link {
 		width: 100%;
 		padding: 1.5rem 3rem;
 		text-align: center;
@@ -154,6 +159,4 @@ nav a:hover {
 		font-size: 24px;
 		color: inherit;
 	}
-
-
 }

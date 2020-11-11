@@ -16,9 +16,9 @@
 				<h1>logo</h1>
 				<nav class="menu">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="produtos.html">Produtos</a></li>
-						<li><a href="contatos.html">Contatos</a></li>
+						<li><a class="link" href="index.html">Home</a></li>
+						<li><a class="link" href="produtos.html">Produtos</a></li>
+						<li><a class="link" href="contatos.html">Contatos</a></li>
 					</ul>
 				</nav>
 				<div class="btn-menu btn-open"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -34,13 +34,9 @@
 		<footer>
 		</footer>
 		<script type="text/javascript">
-			const container = document.querySelector("div.container");
-			const header = document.querySelector(".cab");
-			window.addEventListener("scroll", function(){
-				container.classList.toggle("mudou", window.scrollY > 619);
-				header.classList.toggle("mudou_color", window.scrollY > 619);				
-			})
+
 		</script>
 		<script type="text/javascript" src="btn.js"></script>
+		<script type="text/javascript" src="lazyload.js"></script>
 	</body>
 </html>

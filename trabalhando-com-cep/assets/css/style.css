@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FCFCFC;
+    height: 105vh;
+}
+
+
+.header__title {
+    text-align: center;
+    padding: 5rem 0;
+    color: rgb(23, 58, 104);
+}
+
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 3rem;
+    
+}
+
+.form__title {
+    text-align: center;
+    padding: 3rem;
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    color: rgb(23, 58, 104);
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+input {
+    font-size: 1rem;
+}
+
+.junta-btn {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form__group__input {
+    min-width: 150px;
+    width: 100%;
+    max-width: 285px;
+    height: 2rem;
+    font-size: 1rem;
+}
+
+.btn {
+    border-radius: 10px;
+    padding: 0rem 1rem;
+    border: none;
+    width: 40%;
+    font-size: .9rem;
+    color: white;
+    background-color: rgba(158, 158, 255, 0.877);
+    min-width: 50px;
+    width: 100%;
+    max-width: 100px;
+}
+
+.active {
+    background-color: rgba(38, 38, 255, 0.877);
+    cursor: pointer;
+}
+
+
+#error {
+    color: rgb(167, 0, 0);
+}
+
+.input-side {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-group-side {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.input-bairro__label, .input-rua__label {
+    margin-top: 2rem;
+}
+
+
+.btn-submit {
+    height: 3rem;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.readonly {
+    background-color: rgba(196, 196, 196, 0.493);
+    border-radius: 10px;
+    height: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.158);
+    padding: 1rem
+}
+
+@media (max-width: 800px) {
+    .form__title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 490px) {
+    .form {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 419px) {
+    .form__btn {
+        height: 2rem;
+        margin: 1rem auto;
+    }
+
+    .form__group__input { 
+        max-width: 100%;
+    }
+
+    .input-group-side {
+        width: 50%;
+        margin-top: 2rem;
+    }
+    .input-group {
+        width: 100%;
+        padding-right: 0;
+    }
+}

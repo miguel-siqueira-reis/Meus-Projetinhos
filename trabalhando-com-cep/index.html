@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>BuscarCep</title>
+</head>
+<body>
+	<head>
+		<h1 class="header__title">BuscarCep</h1>
+	</head>
+	<main class="container">
+		<form class="form" method="POST">
+			<h2 class="form__title">Buscador de informações do cep.</h2>
+			<div class="form__group form__grop__getDataCep">
+				<label class="form__group__label label-cep" for="input-cep">Digite seu cep:</label>
+				<div class="junta-btn">
+					<input class="form__group__input input-cep" maxlength="10" autocomplete="off"  id="input-cep">
+					<button class="form__btn btn" id="button-cep">Buscar</button>
+				</div>
+				<span id="error"></span> <div class="junta-btn">
+			</div>
+			<div class="form__group form__grop__setDataCep">
+				<div class="input-side">
+					<div class="input-group">
+						<label for="input-cidade">Cidade:</label>
+						<input id="input-cidade" class="readonly" type="text" readonly>
+					</div>
+					<div class="input-group-side">
+						<label for="input-estado" class="label-side">Estado:</label>
+						<input id="input-estado" class="readonly" type="text" readonly>
+					</div>
+				</div>
+				<label class="input-bairro__label" for="input-bairro">Bairro:</label>
+				<input id="input-bairro" class="readonly" type="text" readonly>
+				<label class="input-rua__label" for="input-rua">Rua:</label>
+				<input id="input-rua" class="readonly" type="text" readonly>
+			</div>
+			<input class="btn-submit btn" type="submit" value="Enivar">
+		</form>
+	</main>
+	<script type="module" src="./assets/js/index.js"></script>
+</body>
+</html>

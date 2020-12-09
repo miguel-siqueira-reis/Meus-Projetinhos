@@ -1,5 +1,4 @@
 import { Service } from './Service.js';
-import { Mensagem } from './Mensagem.js';
 
 export class CepController {
     constructor(input, button , buttonSubmit) {
@@ -14,7 +13,6 @@ export class CepController {
         this.inputBairro = this.main.querySelector('#input-bairro');
         this.inputRua = this.main.querySelector('#input-rua');
         this.activeButton = false;
-        this.activeButtonSubmit = false;
     }
 
     import(e) {
@@ -34,18 +32,19 @@ export class CepController {
             this.activeButton = false;
             this.btn.classList.remove('active')
             this.btnSubmit.classList.remove('active')
+						this.clearForm();
         }
         if (numCep[7]) return;
         const maskCep = "     -   ".split('');
         const cursor = this.inputCep.selectionStart;
         numCep.forEach(value => {
+						console.log(numCep)
             maskCep.splice(maskCep.indexOf(" "), 1, value);
         });
 
         if (this.inputCep.value.replace(/\s/g, '').replace('-', '').length >= 5) {
             this.inputCep.value = maskCep.join('');
-    
-            if(e.key != "ArrowLeft" && cursor == 5) {
+						if(e.key != "ArrowLeft" && cursor == 5) {
                 this.inputCep.setSelectionRange(cursor+1, cursor+1);
             } else {
                 this.inputCep.setSelectionRange(cursor, cursor);
@@ -62,13 +61,22 @@ export class CepController {
             this.mensagem.innerHTML = cep.errors[0].message;
             return;
         }
+			
         this.inputCidade.value = cep.city;
         this.inputEstado.value = cep.state;
         this.inputBairro.value = cep.neighborhood;
         this.inputRua.value = cep.street;
         this.mensagem.innerHTML = '';
         this.btnSubmit.classList.add('active');
+
     }
+	
+		clearForm() {
+			this.inputCidade.value = '';
+    	this.inputEstado.value = '';
+      this.inputBairro.value = '';
+      this.inputRua.value = '';
+		}
 
     clickValid(e) {
         if (!this.btnSubmit.classList.contains('active')) e.preventDefault();

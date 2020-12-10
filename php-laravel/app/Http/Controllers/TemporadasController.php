@@ -14,7 +14,12 @@ class TemporadasController extends Controller
 
         $serie = $user->series()->find($serieId);
         $temporadas = $serie->temporadas;
+        $link = [];
 
-        return view('temporadas.index', compact('temporadas', 'serie'));
+        foreach ($temporadas as $temporada) {
+            $link[] = $temporada->hasLinkEps();
+        }
+
+        return view('temporadas.index', compact('temporadas', 'serie', 'link'));
     }
 }

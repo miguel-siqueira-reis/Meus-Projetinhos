@@ -33,8 +33,8 @@ class SeriesControllers extends Controller {
         $nome = $request->nome;
         $temp = filter_var($request->temporadas, FILTER_SANITIZE_NUMBER_INT);
         $eps = filter_var($request->episodios, FILTER_SANITIZE_NUMBER_INT);
-
-        $serie = $tableWithTemp->create($nome, $temp, $eps, $this->user->series());
+        $link = $request->link;
+        $serie = $tableWithTemp->create($nome, $temp, $eps, $link, $this->user->series());
 
         $request->session()->flash('mensagem', "$nome adicionada com sucesso.");
 

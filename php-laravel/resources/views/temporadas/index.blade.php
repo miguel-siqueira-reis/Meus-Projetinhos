@@ -5,7 +5,7 @@
 @endsection
 
 
-@section('header')
+@section('heade')
 <style>
         ul.list-temp {
             margin-bottom: 5rem;
@@ -58,7 +58,9 @@
 
 @section('content')
     <ul class="list-group list-temp w-80 w-auto">
+        <p style="display: none">{{ $iT = 0 }}</p>
         @foreach ($temporadas as $temporada)
+        <p style="display: none">{{ $iT++ }}</p>
         <li class="list-group-item item-temp item-temp-{{ $temporada->id }}">
             <div class="d-flex justify-content-between" onclick="openEps({{ $temporada->id }})"><p>{{ $temporada->numero }}° Temporada</p><div class="badge badge-secondary count"><span class="i count-{{ $temporada->id }}">{{ $temporada->getEpsAssistidos()->count() }}</span> / {{ $temporada->episodios->count() }}</div></div>
             <ul id="eps-{{ $temporada->id }}" class="list-eps p-0" hidden>
@@ -66,9 +68,13 @@
                 @foreach ($temporada->episodios as $eps)
                     <p style="display: none">{{ $i++ }}</p>
                 <li id="ep-{{$i}}" class="d-flex justify-content-between p-2 item-ep">
-                    Episodio {{$i}}
+                    @if(!empty($link))
+                        <a href="{{ $link[$iT-1][$i-1] }}" onclick="checkDataLink(this, {{ $temporada->id }}, {{ $eps->id }})" target="_blank">Episodio {{$i}}</a>
+                    @else
+                        Episodio {{$i}}
+                    @endif
                     @auth()
-                    <input onclick="checkData(this, {{ $temporada->id }}, {{ $eps->id }})" {{ $eps->assistido? "data-check-{$temporada->id}={$eps->id} checked": '' }} type="checkbox">
+                    <input class="check-{{ $temporada->id }}-{{ $eps->id }}" onclick="checkData(this, {{ $temporada->id }}, {{ $eps->id }})" {{ $eps->assistido? "data-check-{$temporada->id}={$eps->id} checked": '' }} type="checkbox">
                     @csrf
                     @endauth
                 </li>
@@ -94,11 +100,19 @@
 
         }
 
+        function checkDataLink(targetLink, idCountTemp, idEp) {
+            const input = document.querySelector(`.check-${idCountTemp}-${idEp}`);
+            if (!input.hasAttribute('checked') || !input.hasAttribute(`data-check-${idCountTemp}`)) checkData(input, idCountTemp, idEp);
+            input.setAttribute('checked', "");
+            input.checked = true;
+            console.log(input)
+        }
+
         function checkData(target, idCountTemp, idEp) {
             let i = 0;
             const count = document.querySelector(`.count-${idCountTemp}`);
             const checado = target;
-
+            console.log(target)
             if (checado.hasAttribute(`data-check-${idCountTemp}`)) {
                 checado.removeAttribute(`data-check-${idCountTemp}`)
                 i--

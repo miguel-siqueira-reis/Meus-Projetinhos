@@ -26,4 +26,18 @@ class Temporada extends Model
         });
 
     }
+
+    public function hasLinkEps()
+    {
+        $array = [];
+        foreach ($this->episodios as $episodio) {
+            if (!empty($episodio->link)) {
+                $link = $episodio->link;
+                $link = str_replace('*','', $link);
+                $link = str_replace('^','', $link);
+                $array[] = $link;
+            }
+        }
+        return $array;
+    }
 }

@@ -19,6 +19,8 @@ class Autenticar
     {
         if (!$request->is('entrar', 'registrar') && !Auth::check()) {
             return redirect('/entrar');
+        } else if ($request->is('entrar', 'registrar') && Auth::check()) {
+            return redirect('/series');
         }
 
 //        if (!Auth::check()) {

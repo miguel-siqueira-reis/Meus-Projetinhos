@@ -16,7 +16,7 @@
         }
 
     </style>
-    @yield('header')
+    @yield('heade')
     <title>@yield('titleDocument')</title>
 
 </head>

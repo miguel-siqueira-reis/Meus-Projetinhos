@@ -19,7 +19,15 @@ class RegisterController extends Controller
         $data = $request->except('_token');
         $data['password'] = Hash::make($data['password']);
 
-        $user = User::create($data);
+        try {
+
+            $user = User::create($data);
+        } catch(\Exception $e) {
+            if ($e->getCode() == 23000) {
+                $email = explode("'",$e->getMessage())[1];
+                return redirect()->back()->withInput()->withErrors("Email $email já existente.");
+            }
+        }
 
         Auth::login($user);
 

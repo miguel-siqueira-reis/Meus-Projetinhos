@@ -15,9 +15,9 @@ Route::get('/laravelinfo', function () {
     return view('welcome');
 });
 
-Route::get('/series', 'SeriesControllers@index')->name('get_series')->middleware('autenticar');
+Route::get('/series', 'SeriesControllers@index')->name('get_series');
 
-Route::get('/series/adicionar', 'SeriesControllers@create')->name('get_criar_series')->middleware('autenticar');
+Route::get('/series/adicionar', 'SeriesControllers@create')->name('get_criar_series');
 
 Route::post('/series/adicionar', 'SeriesControllers@store');
 
@@ -31,7 +31,6 @@ Route::post('/temporadas/{temporada}/assistir', 'EpisodiosController@assistir');
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/entrar', 'LogarInAppController@index')->name('entrar');
 
@@ -45,6 +44,5 @@ Route::get('/sair', function() {
     \Illuminate\Support\Facades\Auth::logout();
     return redirect()->route('entrar');
 });
-
 
 

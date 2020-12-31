@@ -3,7 +3,7 @@
         <div class="icon">
             <HashTagIcon :size="24" />
         </div>
-        <h1 class="title">Chat-lirvre</h1>
+        <h1 class="title">Chat-livre</h1>
         <div class="separator"></div>
         <div class="description">Canal aberto para comvressas</div>
     </div>

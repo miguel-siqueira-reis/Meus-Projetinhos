@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <ChannelButton selected channelName="Chat Lirvre"/>
+        <ChannelButton selected channelName="Chat Livre"/>
         <ChannelButton channelName="vue-js"/>
         <ChannelButton channelName="jogos"/>
         <ChannelButton channelName="csgo"/>

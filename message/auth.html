@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/icon" href="img/favicon.png">
+    <link rel="stylesheet" href="style/auth.css">
+    <link rel="stylesheet" href="style/sweetalert2.css">
+    <script src="js/sweetalert2.js"></script>
+    <script src="js/index.js"></script>
+    <title>QuickTalk - Authentcation</title>
+</head>
+<body>
+    <div id="loading">Loading&#8330;</div>
+    <div class="bg"></div>
+
+    <div class="auth login">
+        <h2 class="title">QuickTalk</h2>
+        <h3 class="subtitle">Login</h3>
+        <form method="post" id="login">
+            <input type="text" name="email" class="field" placeholder="E-mail or UserName" required />
+            <input type="password" name="password" class="field" placeholder="Password" required />
+            <button>Entrar</button>
+        </form>
+        <p class="toogle" onclick="fadeIn('.login', '.register')">Don't have an account?</p>
+    </div>
+
+    <div class="auth register">
+        <h2 class="title">QuickTalk</h2>
+        <h3 class="subtitle">Register</h3>
+        <form method="post" id="register">
+            <input type="text" name="username" class="field" placeholder="UserName"  minlength="5" maxlength="15" required />
+            <input type="email" name="email" class="field" placeholder="E-mail" required />
+            <input type="password" name="password" class="field" placeholder="Password" minlength="8" required />
+            <input type="password" name="repPassword" class="field" placeholder="Repeat Password" minlength="8" required />
+            <button>Register</button>
+        </form>
+        <p class="toogle" onclick="fadeIn('.register', '.login')">You already have an account?</p>
+    </div>
+
+    <script>
+        const login = document.querySelector('.login');
+        const register = document.querySelector('.register');
+        login.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const url = "process/login.php";
+            const formData = new FormData(login.querySelector('#login'));
+            servicePost(url, formData);
+        })
+
+        register.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const url = "process/registration.php";
+            const formData = new FormData(register.querySelector('#register'));
+            servicePost(url, formData);
+        })
+
+        function servicePost(url, formData) {
+    fadeIn(false,'#loading');
+    fetch(url, {
+        method: "POST",
+        body: formData
+    }).then(response => {
+        if (!response.ok) {
+            console.log(response)
+            Swal.fire({
+                title: "Oops!",
+                text: response.statusText,
+                icon: 'error',
+                confirmButtonText: "Try again"
+            })
+            return;
+        }
+        window.location.href = "./";
+    }).then(e =>fadeIn('#loading', false));
+
+}
+
+    </script>
+</body>
+</html>

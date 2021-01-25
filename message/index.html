@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="./style/homepage.css">
+    <link rel="stylesheet" href="./style/chat.css">
+    <link rel="stylesheet" href="./style/profile.css">
+    <link rel="stylesheet" href="./style/inbox.css">
+    <script src="js/sweetalert2.js"></script>
+    <script src="js/index.js"></script>
+    <title>QuickTalk</title>
+</head>
+<body>
+    <div id="loading">Loading&#8230;</div>
+
+    <div id="inbox" class="colunm">
+        <h2 class="title">Conversation</h2>
+        <input type="text" name="username" class="seach_field" id="" maxlength="15" placeholder="Sheach utilities">
+        <div id="seach_container"></div>
+        <div class="container"></div>
+    </div>
+
+    <div id="chat" class="colunm"></div>
+
+    <div id="profile" class="colunm">
+        <h2 class="title">Profile</h2>
+        <div class="container"></div>
+        <div class="menu">
+            <button>Sair</button>
+        </div>
+    </div>
+    <script>
+
+    readyDom(() => {
+        setInterval(() => {
+            loadInbox();
+        }, 3000);
+        loadProfile();
+        chat();
+    })
+
+    function loadInbox() {
+
+    }
+
+    function loadProfile(id = 1) {
+        url = "process/profile.php?id="+id;
+        fetch(url).then(response => {
+            if (!response.ok) {
+                console.log(response)
+                Swal.fire({
+                    title: "Error!",
+                    text: response.statusText,
+                    icon: 'error',
+                    confirmButtonText: "Ok"
+                })
+                return;
+            }
+            return response.json();
+        }).then(data => {
+            console.log(data)
+            const tag = document.createElement('script');
+            tag.innerHTML = data;
+            const profileContainer = document.querySelector('#profile .container');
+            profileContainer.appendChild(tag);    
+            console.log(profileContainer)
+        })
+        
+    }
+
+    function chat(id = 1) {
+
+    }
+
+
+    </script>
+</body>
+</html>

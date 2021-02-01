@@ -11,7 +11,7 @@
     background-color: var(--white-button);
 }
 
-#inbox #seach_container {
+#inbox #search_container {
     display: none;
     margin: 10px auto;
     width: 90%;
@@ -24,3 +24,33 @@
     overflow-y: auto;
 }
 
+#inbox #search_container p.noResult {
+    display: block;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    font-size: 16pt;
+};
+
+#inbox #search_container div.row {
+    display: block;
+    cursor: pointer;
+}
+
+#inbox #search_container div.row img {
+    display: inline-block;
+    vertical-align: top;
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#inbox #search_container div.row p {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12pt;
+    padding-left: 20px;
+    padding-top: 12px;
+}

@@ -1,3 +1,5 @@
+var $ = document.querySelector.bind(document);
+
 const readyDom = (ready) => { //index
     if (document.readyState != 'loading') return ready();
     document.addEventListener('DOMContentLoaded', ready);

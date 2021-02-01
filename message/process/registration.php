@@ -42,9 +42,9 @@ $getUser->execute();
 $user = $getUser->get_result()->fetch_assoc();
 
 if ($stmt && $user) {
-    setcookie("ID", $user['id'], time() + (10 * 365 * 24 * 60 * 60));
-    setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
-    setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
+    setcookie("ID", $user['id'], time() + (10 * 365 * 24 * 60 * 60), '/');
+    setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60), "/");
+    setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60), "/");
     return true;
 }
 

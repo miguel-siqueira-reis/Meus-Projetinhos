@@ -2,11 +2,33 @@
 
 require_once("connections/connect.php");
 
-$json = "location.href = './auth.html';";
+function timing ($time)
+{
 
-$json = json_encode($json);
+    $time = time() - $time; // to get the time since that moment
+    $time = ($time<1) ? 1 : $time;
+    $tokens = array (
+        31536000 => 'ano',
+        2592000 => 'mês',
+        604800 => 'semana',
+        86400 => 'dia',
+        3600 => 'hora',
+        60 => 'minuto',
+        1 => 'segundo'
+    );
 
-if(!isset($_COOKIE["ID"]) || !isset($_COOKIE["TOKEN"]) || !isset($_COOKIE["SECURE"])) die($json);
+    foreach ($tokens as $unit => $text) {
+        if ($time < $unit) continue;
+        $numberOfUnits = floor($time / $unit);
+        if ($text == "segundo") {
+            return "agora mesmo";
+        }
+        return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
+    }
+
+}
+
+if(!isset($_COOKIE["ID"]) || !isset($_COOKIE["TOKEN"]) || !isset($_COOKIE["SECURE"])) die(header('location: http://localhost:8080/auth.html'));
 
 $id = $_COOKIE["ID"];
 $token = $_COOKIE["TOKEN"];
@@ -17,7 +39,7 @@ $stmt = $con->prepare("SELECT id, Username, Picture, Online, Creation FROM User 
 $stmt->bind_param("isi", $id, $token, $secure);
 $stmt->execute();
 $me = $stmt->get_result()->fetch_assoc();
-if (empty($me)) die($json);
+if (empty($me)) die(header('location: http://localhost:8080/auth.html'));
 
 $user_id = $me['id'];
 $username = $me['Username'];
